@@ -1,0 +1,688 @@
+DELETE searched-history
+
+PUT searched-history
+{
+  "settings": {
+    "analysis": {
+      "char_filter": {
+        "normalize": {
+          "type": "icu_normalizer",
+          "name": "nfkc",
+          "mode": "compose"
+        },
+        "kana_to_romaji": {
+          "type": "mapping",
+          "mappings": [
+            "あ=>a",
+            "い=>i",
+            "う=>u",
+            "え=>e",
+            "お=>o",
+            "か=>ka",
+            "き=>ki",
+            "く=>ku",
+            "け=>ke",
+            "こ=>ko",
+            "さ=>sa",
+            "し=>shi",
+            "す=>su",
+            "せ=>se",
+            "そ=>so",
+            "た=>ta",
+            "ち=>chi",
+            "つ=>tsu",
+            "て=>te",
+            "と=>to",
+            "な=>na",
+            "に=>ni",
+            "ぬ=>nu",
+            "ね=>ne",
+            "の=>no",
+            "は=>ha",
+            "ひ=>hi",
+            "ふ=>fu",
+            "へ=>he",
+            "ほ=>ho",
+            "ま=>ma",
+            "み=>mi",
+            "む=>mu",
+            "め=>me",
+            "も=>mo",
+            "や=>ya",
+            "ゆ=>yu",
+            "よ=>yo",
+            "ら=>ra",
+            "り=>ri",
+            "る=>ru",
+            "れ=>re",
+            "ろ=>ro",
+            "わ=>wa",
+            "を=>o",
+            "ん=>n",
+            "が=>ga",
+            "ぎ=>gi",
+            "ぐ=>gu",
+            "げ=>ge",
+            "ご=>go",
+            "ざ=>za",
+            "じ=>ji",
+            "ず=>zu",
+            "ぜ=>ze",
+            "ぞ=>zo",
+            "だ=>da",
+            "ぢ=>ji",
+            "づ=>zu",
+            "で=>de",
+            "ど=>do",
+            "ば=>ba",
+            "び=>bi",
+            "ぶ=>bu",
+            "べ=>be",
+            "ぼ=>bo",
+            "ぱ=>pa",
+            "ぴ=>pi",
+            "ぷ=>pu",
+            "ぺ=>pe",
+            "ぽ=>po",
+            "きゃ=>kya",
+            "きゅ=>kyu",
+            "きょ=>kyo",
+            "しゃ=>sha",
+            "しゅ=>shu",
+            "しょ=>sho",
+            "ちゃ=>cha",
+            "ちゅ=>chu",
+            "ちょ=>cho",
+            "にゃ=>nya",
+            "にゅ=>nyu",
+            "にょ=>nyo",
+            "ひゃ=>hya",
+            "ひゅ=>hyu",
+            "ひょ=>hyo",
+            "みゃ=>mya",
+            "みゅ=>myu",
+            "みょ=>myo",
+            "りゃ=>rya",
+            "りゅ=>ryu",
+            "りょ=>ryo",
+            "ぎゃ=>gya",
+            "ぎゅ=>gyu",
+            "ぎょ=>gyo",
+            "じゃ=>ja",
+            "じゅ=>ju",
+            "じょ=>jo",
+            "びゃ=>bya",
+            "びゅ=>byu",
+            "びょ=>byo",
+            "ぴゃ=>pya",
+            "ぴゅ=>pyu",
+            "ぴょ=>pyo",
+            "ふぁ=>fa",
+            "ふぃ=>fi",
+            "ふぇ=>fe",
+            "ふぉ=>fo",
+            "ふゅ=>fyu",
+            "うぃ=>wi",
+            "うぇ=>we",
+            "うぉ=>wo",
+            "つぁ=>tsa",
+            "つぃ=>tsi",
+            "つぇ=>tse",
+            "つぉ=>tso",
+            "ちぇ=>che",
+            "しぇ=>she",
+            "じぇ=>je",
+            "てぃ=>ti",
+            "でぃ=>di",
+            "でゅ=>du",
+            "とぅ=>tu",
+            "ぢゃ=>ja",
+            "ぢゅ=>ju",
+            "ぢょ=>jo",
+            "ぁ=>a",
+            "ぃ=>i",
+            "ぅ=>u",
+            "ぇ=>e",
+            "ぉ=>o",
+            "っ=>t",
+            "ゃ=>ya",
+            "ゅ=>yu",
+            "ょ=>yo",
+            "ア=>a",
+            "イ=>i",
+            "ウ=>u",
+            "エ=>e",
+            "オ=>o",
+            "カ=>ka",
+            "キ=>ki",
+            "ク=>ku",
+            "ケ=>ke",
+            "コ=>ko",
+            "サ=>sa",
+            "シ=>shi",
+            "ス=>su",
+            "セ=>se",
+            "ソ=>so",
+            "タ=>ta",
+            "チ=>chi",
+            "ツ=>tsu",
+            "テ=>te",
+            "ト=>to",
+            "ナ=>na",
+            "ニ=>ni",
+            "ヌ=>nu",
+            "ネ=>ne",
+            "ノ=>no",
+            "ハ=>ha",
+            "ヒ=>hi",
+            "フ=>fu",
+            "ヘ=>he",
+            "ホ=>ho",
+            "マ=>ma",
+            "ミ=>mi",
+            "ム=>mu",
+            "メ=>me",
+            "モ=>mo",
+            "ヤ=>ya",
+            "ユ=>yu",
+            "ヨ=>yo",
+            "ラ=>ra",
+            "リ=>ri",
+            "ル=>ru",
+            "レ=>re",
+            "ロ=>ro",
+            "ワ=>wa",
+            "ヲ=>o",
+            "ン=>n",
+            "ガ=>ga",
+            "ギ=>gi",
+            "グ=>gu",
+            "ゲ=>ge",
+            "ゴ=>go",
+            "ザ=>za",
+            "ジ=>ji",
+            "ズ=>zu",
+            "ゼ=>ze",
+            "ゾ=>zo",
+            "ダ=>da",
+            "ヂ=>ji",
+            "ヅ=>zu",
+            "デ=>de",
+            "ド=>do",
+            "バ=>ba",
+            "ビ=>bi",
+            "ブ=>bu",
+            "ベ=>be",
+            "ボ=>bo",
+            "パ=>pa",
+            "ピ=>pi",
+            "プ=>pu",
+            "ペ=>pe",
+            "ポ=>po",
+            "キャ=>kya",
+            "キュ=>kyu",
+            "キョ=>kyo",
+            "シャ=>sha",
+            "シュ=>shu",
+            "ショ=>sho",
+            "チャ=>cha",
+            "チュ=>chu",
+            "チョ=>cho",
+            "ニャ=>nya",
+            "ニュ=>nyu",
+            "ニョ=>nyo",
+            "ヒャ=>hya",
+            "ヒュ=>hyu",
+            "ヒョ=>hyo",
+            "ミャ=>mya",
+            "ミュ=>myu",
+            "ミョ=>myo",
+            "リャ=>rya",
+            "リュ=>ryu",
+            "リョ=>ryo",
+            "ギャ=>gya",
+            "ギュ=>gyu",
+            "ギョ=>gyo",
+            "ジャ=>ja",
+            "ジュ=>ju",
+            "ジョ=>jo",
+            "ビャ=>bya",
+            "ビュ=>byu",
+            "ビョ=>byo",
+            "ピャ=>pya",
+            "ピュ=>pyu",
+            "ピョ=>pyo",
+            "ファ=>fa",
+            "フィ=>fi",
+            "フェ=>fe",
+            "フォ=>fo",
+            "フュ=>fyu",
+            "ウィ=>wi",
+            "ウェ=>we",
+            "ウォ=>wo",
+            "ヴァ=>va",
+            "ヴィ=>vi",
+            "ヴ=>v",
+            "ヴェ=>ve",
+            "ヴォ=>vo",
+            "ツァ=>tsa",
+            "ツィ=>tsi",
+            "ツェ=>tse",
+            "ツォ=>tso",
+            "チェ=>che",
+            "シェ=>she",
+            "ジェ=>je",
+            "ティ=>ti",
+            "ディ=>di",
+            "デュ=>du",
+            "トゥ=>tu",
+            "ヂャ=>ja",
+            "ヂュ=>ju",
+            "ヂョ=>jo",
+            "ァ=>a",
+            "ィ=>i",
+            "ゥ=>u",
+            "ェ=>e",
+            "ォ=>o",
+            "ッ=>t",
+            "ャ=>ya",
+            "ュ=>yu",
+            "ョ=>yo"
+          ]
+        }
+      },
+      "tokenizer": {
+        "kuromoji_normal": {
+          "mode": "normal",
+          "type": "kuromoji_tokenizer"
+        }
+      },
+      "filter": {
+        "readingform": {
+          "type": "kuromoji_readingform",
+          "use_romaji": true
+        },
+        "edge_ngram": {
+          "type": "edge_ngram",
+          "min_gram": 1,
+          "max_gram": 10
+        },
+        "synonym": {
+          "type": "synonym",
+          "lenient": true,
+          "synonyms": [
+            "nippon, nihon"
+          ]
+        }
+      },
+      "analyzer": {
+        "suggest_index_analyzer": {
+          "type": "custom",
+          "char_filter": [
+            "normalize"
+          ],
+          "tokenizer": "kuromoji_normal",
+          "filter": [
+            "lowercase",
+            "edge_ngram"
+          ]
+        },
+        "suggest_search_analyzer": {
+          "type": "custom",
+          "char_filter": [
+            "normalize"
+          ],
+          "tokenizer": "kuromoji_normal",
+          "filter": [
+            "lowercase"
+          ]
+        },
+        "readingform_index_analyzer": {
+          "type": "custom",
+          "char_filter": [
+            "normalize",
+            "kana_to_romaji"
+          ],
+          "tokenizer": "kuromoji_normal",
+          "filter": [
+            "lowercase",
+            "readingform",
+            "asciifolding",
+            "synonym",
+            "edge_ngram"
+          ]
+        },
+        "readingform_search_analyzer": {
+          "type": "custom",
+          "char_filter": [
+            "normalize",
+            "kana_to_romaji"
+          ],
+          "tokenizer": "kuromoji_normal",
+          "filter": [
+            "lowercase",
+            "readingform",
+            "asciifolding",
+            "synonym"
+          ]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "properties": {
+      "query": {
+        "type": "keyword",
+        "fields": {
+          "suggest": {
+            "type": "text",
+            "search_analyzer": "suggest_search_analyzer",
+            "analyzer": "suggest_index_analyzer"
+          },
+          "readingform": {
+            "type": "text",
+            "search_analyzer": "readingform_search_analyzer",
+            "analyzer": "readingform_index_analyzer"
+          }
+        }
+      },
+      "user_email": {
+        "type": "keyword"
+      },
+      "matched_count": {
+        "type": "long"
+      },
+      "searched_at": {
+        "type": "date"
+      }
+    }
+  }
+}
+
+
+GET searched-history
+
+
+GET searched-history/_search
+
+GET _analyze
+{
+  "tokenizer": "standard",
+  "filter": [
+    { "type": "edge_ngram",
+      "min_gram": 1,
+      "max_gram": 10
+    }
+  ],
+  "text": "サイバーセキュリティ"
+}
+
+
+# suggestion に使いたい時。
+GET searched-history/_search
+{
+  "size": 0,
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "range": {
+            "matched_count": {
+              "gt": 0
+            }
+          }
+        },
+        {
+          "bool": {
+            "should": [
+              {
+                "match": {
+                  "query.suggest": {
+                    "query": "na"
+                  }
+                }
+              },
+              {
+                "match": {
+                  "query.readingform": {
+                    "query": "na",
+                    "fuzziness":"AUTO",
+                    "operator": "and"
+                  }
+                }
+              }
+            ],
+            "minimum_should_match": 1
+          }
+        }
+      ]
+    }
+  },
+  "aggs": {
+    "keywords": {
+      "terms": {
+        "field": "query",
+        "order": {
+          "_count": "desc"
+        },
+        "size":"10"
+      }
+    }
+  }
+}
+
+
+# search template を登録する。
+POST _scripts/history-search-template
+{
+  "script": {
+    "lang": "mustache",
+    "source": """
+    {
+        "size": 0,
+        "query": {
+          "bool": {
+            "must": [
+              {
+                "range": {
+                  "matched_count": {
+                    "gt": 0
+                  }
+                }
+              },
+              {
+                "bool": {
+                  "should": [
+                    {
+                      "match": {
+                        "query.suggest": {
+                          "query": "{{query}}"
+                        }
+                      }
+                    },
+                    {
+                      "match": {
+                        "query.readingform": {
+                          "query": "{{query}}",
+                          "fuzziness":"AUTO",
+                          "operator": "and"
+                        }
+                      }
+                    }
+                  ],
+                  "minimum_should_match": 1
+                }
+              }
+            ]
+          }
+        },
+        "aggs": {
+          "keywords": {
+            "terms": {
+              "field": "query",
+              "order": {
+                "_count": "desc"
+              },
+              "size":"10"
+            }
+          }
+        }
+      }
+      """,
+      "params": {}
+    }
+}
+
+# ============ search template を使った検索 ============
+# 全期間。
+GET /searched-history/_search/template
+{
+  "id": "history-search-template",
+  "params": {
+    "query": "tai"
+  }
+}
+
+
+# 検索ワード別、検索結果。
+GET searched-history/_search
+{
+  "size": 0,
+  "aggs": {
+    "keywords": {
+      "terms": {
+        "field": "query",
+        "order": {
+          "_count": "desc"
+        },
+        "size":"10"
+      }
+    }
+  }
+}
+
+
+# 人別、検索結果。
+GET searched-history/_search
+{
+  "size": 0,
+  "aggs": {
+    "keywords": {
+      "terms": {
+        "field": "user_email",
+        "order": {
+          "_count": "desc"
+        },
+        "size":"10"
+      }
+    }
+  }
+}
+
+
+# 人・期間（daily）別、検索結果。
+GET searched-history/_search
+{
+  "size": 0,
+  "aggs": {
+    "per_user": {
+      "terms": {
+        "field": "user_email",
+        "size": 10
+      },
+      "aggs": {
+        "per_day": {
+          "date_histogram": {
+            "field": "searched_at",
+            "calendar_interval": "day",
+            "order": {
+              "_key": "desc"
+            }
+          },
+          "aggs": {
+            "top_keywords": {
+              "terms": {
+                "field": "query",
+                "order": {
+                  "_count": "desc"
+                },
+                "size": 10
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+POST _bulk
+{"index": {"_index": "searched-history"}}
+{"query": "日本 地図", "user_email": "official@example.com", "matched_count": 3, "searched_at":"2024-04-17T12:01:00"}
+{"index": {"_index": "searched-history"}}
+{"query": "地図", "user_email": "official@example.com", "matched_count": 23, "searched_at":"2024-04-17T12:00:00"}
+{"index": {"_index": "searched-history"}}
+{"query": "小川", "user_email": "official@example.com", "matched_count": 10000, "searched_at":"2024-04-20T13:00:00"}
+{"index": {"_index": "searched-history"}}
+{"query": "Opensearch", "user_email": "official@example.com", "matched_count": 15, "searched_at":"2024-04-19T10:40:00"}
+{"index": {"_index": "searched-history"}}
+{"query": "Opensearch Elasticseach 違い", "user_email": "official@example.com", "matched_count": 2, "searched_at":"2024-04-21T13:00:00"}
+{"index": {"_index": "searched-history"}}
+{"query": "Opensearch 価格", "user_email": "official@example.com", "matched_count": 3, "searched_at":"2024-04-21T14:00:00"}
+{"index": {"_index": "searched-history"}}
+{"query": "Opensearch 価格", "user_email": "official@example.com", "matched_count": 3, "searched_at":"2024-04-22T15:00:00"}
+{"index": {"_index": "searched-history"}}
+{"query": "Opensearch aws", "user_email": "official@example.com", "matched_count": 12, "searched_at":"2024-04-22T15:10:00"}
+{"index": {"_index": "searched-history"}}
+{"query": "テスト", "user_email": "official@example.com", "matched_count": 1299, "searched_at":"2024-04-20T12:00:00"}
+{"index": {"_index": "searched-history"}}
+{"query": "アカウント", "user_email": "kokoichi206@example.com", "matched_count": 400, "searched_at":"2024-04-20T13:00:00"}
+{"index": {"_index": "searched-history"}}
+{"query": "アカウント 発行", "user_email": "kokoichi206@example.com", "matched_count": 100, "searched_at":"2024-04-20T13:00:00"}
+{"index": {"_index": "searched-history"}}
+{"query": "アカウント 削除", "user_email": "kokoichi206@example.com", "matched_count": 121, "searched_at":"2024-04-20T12:10:00"}
+{"index": {"_index": "searched-history"}}
+{"query": "開発環境", "user_email": "kokoichi206@example.com", "matched_count": 1108, "searched_at":"2024-04-20T12:10:00"}
+{"index": {"_index": "searched-history"}}
+{"query": "開発環境", "user_email": "kokoichi206@example.com", "matched_count": 889, "searched_at":"2024-04-20T12:10:00"}
+{"index": {"_index": "searched-history"}}
+{"query": "開発環境 リンク", "user_email": "kokoichi206@example.com", "matched_count": 108, "searched_at":"2024-04-20T12:10:00"}
+{"index": {"_index": "searched-history"}}
+{"query": "地図", "user_email": "kokoichi206@example.com", "matched_count": 23, "searched_at":"2024-04-20T12:10:00"}
+{"index": {"_index": "searched-history"}}
+{"query": "フランス", "user_email": "kokoichi206@example.com", "matched_count": 111, "searched_at":"2024-04-20T12:10:00"}
+{"index": {"_index": "searched-history"}}
+{"query": "vpc", "user_email": "kokoichi206@example.com", "matched_count": 80, "searched_at":"2024-04-20T12:00:00"}
+{"index": {"_index": "searched-history"}}
+{"query": "vpc", "user_email": "kokoichi206@example.com", "matched_count": 14, "searched_at":"2024-04-14T12:10:00"}
+{"index": {"_index": "searched-history"}}
+{"query": "日本ちず", "user_email": "kokoichi206@example.com", "matched_count": 23, "searched_at":"2024-04-20T12:10:00"}
+{"index": {"_index": "searched-history"}}
+{"query": "MA", "user_email": "kokoichi206@example.com", "matched_count": 111, "searched_at":"2024-04-12T12:10:00"}
+{"index": {"_index": "searched-history"}}
+{"query": "MA", "user_email": "kokoichi206@example.com", "matched_count": 78, "searched_at":"2024-04-13T12:10:00"}
+{"index": {"_index": "searched-history"}}
+{"query": "決算", "user_email": "kokoichi206@example.com", "matched_count": 50, "searched_at":"2024-04-13T15:10:00"}
+{"index": {"_index": "searched-history"}}
+{"query": "全社MTG", "user_email": "kokoichi206@example.com", "matched_count": 90, "searched_at":"2024-04-14T14:10:00"}
+{"index": {"_index": "searched-history"}}
+{"query": "全社MTG", "user_email": "kokoichi206@example.com", "matched_count": 90, "searched_at":"2024-04-14T14:10:00"}
+{"index": {"_index": "searched-history"}}
+{"query": "退職 方法", "user_email": "kokoichi206@example.com", "matched_count": 13, "searched_at":"2024-04-01T14:10:00"}
+{"index": {"_index": "searched-history"}}
+{"query": "退職", "user_email": "kokoichi206@example.com", "matched_count": 3, "searched_at":"2024-04-11T14:10:00"}
+{"index": {"_index": "searched-history"}}
+{"query": "休職", "user_email": "kokoichi206@example.com", "matched_count": 1, "searched_at":"2024-04-11T14:10:00"}
+{"index": {"_index": "searched-history"}}
+{"query": "退勤", "user_email": "kokoichi206@example.com", "matched_count": 11, "searched_at":"2024-04-17T19:15:00"}
+{"index": {"_index": "searched-history"}}
+{"query": "退勤 忘れ", "user_email": "kokoichi206@example.com", "matched_count": 190, "searched_at":"2024-04-21T18:50:00"}
+{"index": {"_index": "searched-history"}}
+{"query": "退職", "user_email": "kokoichi206@example.com", "matched_count": 5, "searched_at":"2024-05-11T14:10:00"}
+{"index": {"_index": "searched-history"}}
+{"query": "退職金", "user_email": "kokoichi206@example.com", "matched_count": 2, "searched_at":"2024-05-11T14:20:00"}
+{"index": {"_index": "searched-history"}}
+{"query": "手当", "user_email": "kokoichi206@example.com", "matched_count": 108, "searched_at":"2024-04-17T19:25:00"}
+{"index": {"_index": "searched-history"}}
+{"query": "待機手当", "user_email": "kokoichi206@example.com", "matched_count": 5, "searched_at":"2024-04-17T19:35:00"}

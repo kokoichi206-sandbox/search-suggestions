@@ -1,0 +1,45 @@
+version: "3"
+
+services:
+  opensearch-dashboards:
+    image: opensearchproject/opensearch-dashboards:2.13.0
+    container_name: opensearch-dashboards-c
+    environment:
+      OPENSEARCH_HOSTS: "https://opensearch-c:9200"
+    ports:
+      - 5602:5601
+    links:
+      - opensearch
+    networks:
+      - opensearch-net
+
+  opensearch:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: opensearch-c
+    environment:
+      - cluster.name=docker-cluster
+      - node.name=os-node
+      - cluster.initial_master_nodes=os-node
+      - bootstrap.memory_lock=true
+      - http.host=0.0.0.0
+      - transport.host=127.0.0.1
+      - "OPENSEARCH_JAVA_OPTS=-Xms1g -Xmx1g"
+      - OPENSEARCH_INITIAL_ADMIN_PASSWORD=ad.PASS#1
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - opensearch-data:/usr/share/opensearch/data
+    ports:
+      - 9201:9200
+    networks:
+      - opensearch-net
+
+volumes:
+  opensearch-data:
+
+networks:
+  opensearch-net:

@@ -1,0 +1,58 @@
+{
+    "took": 164,
+    "timed_out": false,
+    "_shards": {
+        "total": 1,
+        "successful": 1,
+        "skipped": 0,
+        "failed": 0
+    },
+    "hits": {
+        "total": {
+            "value": 10,
+            "relation": "eq"
+        },
+        "max_score": null,
+        "hits": []
+    },
+    "aggregations": {
+        "keywords": {
+            "doc_count_error_upper_bound": 0,
+            "sum_other_doc_count": 0,
+            "buckets": [
+                {
+                    "key": "退職",
+                    "doc_count": 2
+                },
+                {
+                    "key": "開発環境",
+                    "doc_count": 2
+                },
+                {
+                    "key": "待機手当",
+                    "doc_count": 1
+                },
+                {
+                    "key": "退勤",
+                    "doc_count": 1
+                },
+                {
+                    "key": "退勤 忘れ",
+                    "doc_count": 1
+                },
+                {
+                    "key": "退職 方法",
+                    "doc_count": 1
+                },
+                {
+                    "key": "退職金",
+                    "doc_count": 1
+                },
+                {
+                    "key": "開発環境 リンク",
+                    "doc_count": 1
+                }
+            ]
+        }
+    }
+}

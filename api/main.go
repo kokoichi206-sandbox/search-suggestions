@@ -120,6 +120,7 @@ func (h handler) autoComplete() func(w http.ResponseWriter, r *http.Request) {
 			res.Suggestions = append(res.Suggestions, sug.Key)
 		}
 
+		w.Header().Set("Access-Control-Allow-Origin", "*")
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(res)
 	}
